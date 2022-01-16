@@ -4,6 +4,7 @@ import Layout from '../containers/Layout';
 import Login from '../pages/Login';
 import Home from '../pages/Home';
 import NotFound from "../pages/NotFound";
+import CreateAccount from '../pages/CreateAccount';
 import '../styles/global.css';
 
 const App = () => {
@@ -12,7 +13,8 @@ const App = () => {
             <Layout>
                 <Routes>
                     <Route exact path="/" element={<Home/>}/>
-                    <Route exact path="/login" element={<Login/>}/>
+                    <Route exact path="/api/v1/login" element={<Login/>}/>
+                    <Route exact path="/api/v1/createAcount" element={<CreateAccount/>}/>
                     <Route exact path="*" element={<NotFound/>}/>
                 </Routes>
             </Layout>
