@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=dwiszgiq
+      - POSTGRES_USER=dwiszgiq
+      - POSTGRES_PASSWORD=693fFfE3uk9ewU7k38IiBPNHv02LNnuG
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=fabian.urrutia@correounivalle.edu.co
+      - PGADMIN_DEFAULT_PASSWORD=fabian28
+    ports:
+      - 5050:80
+
+
+
