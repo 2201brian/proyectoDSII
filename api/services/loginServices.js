@@ -23,3 +23,4 @@ async find(user,pass) {
 }
 
 module.exports = loginServices;
+
