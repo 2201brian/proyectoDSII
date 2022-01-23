@@ -4,14 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "server": "nodemon index.js",
     "start": "node index.js",
+    "cliente": "npm start --prefix ../cliente",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"npm run server \" \"npm run cliente\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^7.0.0",
     "cors": "^2.8.5",
     "dotenv": "^14.0.1",
     "express": "^4.17.2",

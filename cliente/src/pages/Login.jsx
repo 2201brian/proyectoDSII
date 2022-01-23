@@ -18,11 +18,11 @@ const Login = () => {
         ingresar(data);
     }
 
-    /*
+    
     const ingresar = async (info) => {
-        const res = await axios.post('/ingresar',info);
+        const res = await axios.post('/login/check',info);
         console.log(res.data) 
-    }*/
+    }
     
 
     return (

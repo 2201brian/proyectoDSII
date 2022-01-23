@@ -6,12 +6,12 @@ const port = 3000
 
 app.use(express.json())
 app.get('/', (req, res) => {
-    res.send('Hola mi server en express');
+    console.log('Running correctly');
   });
 
   
 app.listen(port, () => {
-    console.log('Mi port' +  port);
+    console.log('Backend running in port:  ' +  port);
   });
   
 routerApi(app);  
