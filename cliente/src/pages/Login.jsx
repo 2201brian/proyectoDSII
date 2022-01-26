@@ -20,8 +20,16 @@ const Login = () => {
 
     
     const ingresar = async (info) => {
-        const res = await axios.post('/login/check',info);
-        console.log(res.data) 
+        const res = await axios.post('http://localhost:3000/api/v1/login/check',info).then((res) => {
+            try{
+                console.log(res.data)
+            }
+            catch(e) {
+              console.log(res, e)
+            }
+          }).catch((err) =>
+            dispatch(returnErrors(err.response.data, err.response.status))
+          );;
     }
     
 
