@@ -11,15 +11,16 @@ router.get("/", async (req,res,next) =>{
     }
 });
 
-router.get("/check",async (req,res,next) =>{
+router.post("/check",async (req,res,next) =>{
     try {
     const {username,password} = req.body
     const products = await service.find(username,password);
-    if(products)
-        res.json("encontrado")
-    else
-        res.json("no encontrado")
-
+    if(products){
+        res.json("Found")
+    }
+    else{
+        res.json("Not Registered")
+    } 
     } catch (error) {
         next(error)
     }

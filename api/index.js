@@ -9,7 +9,10 @@ app.get('/', (req, res) => {
     console.log('Running correctly');
   });
 
-  
+app.use(cors({
+    origin: '*'
+  }));
+
 app.listen(port, () => {
     console.log('Backend running in port:  ' +  port);
   });
