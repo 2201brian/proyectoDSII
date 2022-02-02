@@ -5,3 +5,6 @@ body{
 .error-message{
     color:red;
 }
+.mensaje-aviso{
+    color:rgb(45, 170, 45);
+}

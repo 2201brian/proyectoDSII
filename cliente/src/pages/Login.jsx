@@ -3,6 +3,7 @@ import '../styles/Login.scss';
 import logo from '@logos/logo.png';
 import axios from 'axios';
 import Error from '../components/Error';
+import Message from '../components/Message';
 
 const Login = () => {
     const form = useRef(null)
@@ -25,6 +26,8 @@ const Login = () => {
                 console.log(res)
                 if (res.data == 'Found'){
                     setError(false);
+                    location.href='/users/';
+
                 } else if  (res.data == 'Not Registered'){
                     setError(true);
                 }
