@@ -1,5 +1,7 @@
 import React, {useRef} from 'react';
 import '../styles/CreateAccount.scss';
+import axios from 'axios';
+
 
 const CreateAccount = () => {
 	const form = useRef(null)
@@ -13,7 +15,20 @@ const CreateAccount = () => {
 			username: formData.get('id'),
 			password: formData.get('password'),
         }
-        console.log(data);
+        registrar(data);
+    }
+	
+	const registrar = async (info) => {
+        const res = await axios.post('http://localhost:3000/api/v1/createAcount/create',info).then((res) => {
+            try{
+                console.log(res.data)
+            }
+            catch(e) {
+              console.log(res, e)
+            }
+          }).catch((err) =>
+            dispatch(returnErrors(err.response.data, err.response.status))
+          );;
     }
 	
     return (
@@ -27,7 +42,7 @@ const CreateAccount = () => {
 						<label for="email" className="label">Email</label>
 						<input type="text" name="email" placeholder="papeleria@example.com" className="input input-email" />
                         <label for="id" className="label">ID</label>
-						<input type="text" name="id" placeholder="papeleria@example.com" className="input input-email" />
+						<input type="text" name="id" placeholder="1234567891" className="input input-email" />
 						<label for="password" className="label">Password</label>
 						<input type="password" name="password" placeholder="*********" className="input input-password" />
 					</div>
