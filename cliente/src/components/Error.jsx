@@ -6,6 +6,7 @@ function Error({mensaje}){
         <span className='error-message'>
             {mensaje}
         </span>
+        //c
     )
 }
 export default Error;

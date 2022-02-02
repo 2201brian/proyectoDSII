@@ -1,10 +1,12 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import '../styles/CreateAccount.scss';
 import axios from 'axios';
+import Message from '../components/Message';
+import Error from '../components/Error';
 
 
 const CreateAccount = () => {
-	const form = useRef(null)
+	const form = useRef(null);
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -15,22 +17,26 @@ const CreateAccount = () => {
 			username: formData.get('id'),
 			password: formData.get('password'),
         }
+        console.log(data);
         registrar(data);
     }
-	
+	let componente;
 	const registrar = async (info) => {
         const res = await axios.post('http://localhost:3000/api/v1/createAcount/create',info).then((res) => {
             try{
-                console.log(res.data)
+                console.log(res.data);
+                if (res.data == 'created'){
+                    componente=<Message mensaje='Registrado correctamente'/>
+                } else{
+                    componente=<Error mensaje='No fue posible registrarlo'/>
+                }
             }
             catch(e) {
-              console.log(res, e)
+                console.log(res, e)
             }
-          }).catch((err) =>
-            dispatch(returnErrors(err.response.data, err.response.status))
-          );;
+          })
     }
-	
+
     return (
         <div className="CreateAccount">
 			<div className="CreateAccount-container">
@@ -50,6 +56,7 @@ const CreateAccount = () => {
 							onClick={handleSubmit}>
 						Registrar
 					</button>
+                    {componente}
 				</form>
 			</div>
 		</div>

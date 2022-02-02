@@ -15,7 +15,7 @@ const Header = () => {
                 
                 <ul>
                     <li>
-                    <a href="/createAcount">Servicios</a>
+                    <a href="/">Servicios</a>
                     </li>
                     <li>
                     <a href="/">Quienes somos</a>
