@@ -15,7 +15,7 @@ const Header = () => {
                 
                 <ul>
                     <li>
-                    <a href="/api/v1/createAcount">Servicios</a>
+                    <a href="/createAcount">Servicios</a>
                     </li>
                     <li>
                     <a href="/">Quienes somos</a>
@@ -32,7 +32,7 @@ const Header = () => {
             <div className="navbar-right">
             <ul>
                 <li className="navbar-idempleado">
-                    <a href="/api/v1/login">Empleados</a>
+                    <a href="/login">Empleados</a>
                 </li>
                 <li className="navbar-shopping-cart">
                 <img src={shoppingCart} alt="shopping cart" />

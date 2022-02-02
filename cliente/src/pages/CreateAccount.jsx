@@ -1,7 +1,6 @@
 import React, {useRef} from 'react';
 import '../styles/CreateAccount.scss';
 
-
 const CreateAccount = () => {
 	const form = useRef(null)
 
