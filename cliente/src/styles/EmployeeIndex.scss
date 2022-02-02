@@ -1,0 +1,10 @@
+@import 'vars';
+
+.index-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    place-items: center;
+    background-color: var(--text-input-field);
+}

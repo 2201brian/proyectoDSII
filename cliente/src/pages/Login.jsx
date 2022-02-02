@@ -1,11 +1,12 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import '../styles/Login.scss';
-
 import logo from '@logos/logo.png';
 import axios from 'axios';
+import Error from '../components/Error';
 
 const Login = () => {
     const form = useRef(null)
+    const [error, setError] =useState(false);
 
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -14,7 +15,6 @@ const Login = () => {
             username: formData.get('id'),
             password: formData.get('password'),
         }
-        console.log(data);
         ingresar(data);
     }
 
@@ -22,16 +22,28 @@ const Login = () => {
     const ingresar = async (info) => {
         const res = await axios.post('http://localhost:3000/api/v1/login/check',info).then((res) => {
             try{
-                console.log(res.data)
+                console.log(res)
+                if (res.data == 'Found'){
+                    setError(false);
+                } else if  (res.data == 'Not Registered'){
+                    setError(true);
+                }
             }
             catch(e) {
               console.log(res, e)
+              
             }
           }).catch((err) =>
             dispatch(returnErrors(err.response.data, err.response.status))
           );;
     }
     
+    let componente;
+    if (error){
+        componente = <Error mensaje='Usuario y/o contrasena incorrectos'/>
+    } else{
+        componente = null;
+    }
 
     return (
     <div className="login">
@@ -46,7 +58,9 @@ const Login = () => {
                 onClick={handleSubmit}>
                     Ingresar
                 </button>
+                {componente}
                 <a href="/">Olvidé mi contraseña</a>
+
             </form>
         </div>
     </div>

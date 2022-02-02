@@ -1,0 +1,19 @@
+@import 'vars';
+
+.layout-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    background-color: var(--indigo-very-light-primary);
+}
+.container{
+    width: 70%;
+    height: 700px;
+    border-radius: 20px;
+
+    border: 3px solid var(--indigo-dark-primary);
+    display: flex;
+    overflow: hidden;
+}

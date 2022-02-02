@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import '../styles/CreateAccount.scss';
 import axios from 'axios';
 
+
 const CreateAccount = () => {
 	const form = useRef(null)
 
@@ -14,7 +15,6 @@ const CreateAccount = () => {
 			username: formData.get('id'),
 			password: formData.get('password'),
         }
-		console.log(data);
         registrar(data);
     }
 	
