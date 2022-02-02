@@ -15,7 +15,9 @@ router.post("/create",async (req,res,next) =>{
     try {
         const {name, email, username, password} = req.body
         const dataUser = await service.crearEmpleado(name, email, username, password);
-        /*if(dataUser){
+        res.json("created");
+        /*
+        if(dataUser){
             res.json("created")
         }
         else{

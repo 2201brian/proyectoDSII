@@ -10,20 +10,20 @@ class createServices{
 async crearEmpleado(name, email, id, password) {
         const query =  `INSERT INTO empleados VALUES('${name}', '${email}', '${id}', '${password}')`;
         const [data] = await sequelize.query(query);
-        this.revisarEmpleado(id, name);
-
-        /*if(data.length > 0)
+        const revisar = this.revisarEmpleado(id,name);
+        return revisar;
+        //const comprobar = this.revisarEmpleado(id, name);
+        /*if(revisar > 0)
           return true;
         else
-          return false;*/
-        
+          return false;
+        */
       }
 
 async revisarEmpleado(id, name) {
         const query2 = `SELECT id_empleado, nombre FROM empleados WHERE id_empleado = '${id}' AND nombre = '${name}'`;
         const [data] = await sequelize.query(query2);
-
-        //console.log(data);
+        return data;
     }
 }
 
