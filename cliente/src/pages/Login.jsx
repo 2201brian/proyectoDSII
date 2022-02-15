@@ -6,7 +6,7 @@ import Error from '../components/Error';
 import Message from '../components/Message';
 
 const Login = () => {
-    const form = useRef(null)
+    const form = useRef(null);
     const [error, setError] =useState(false);
 
     const handleSubmit = (event) =>{
