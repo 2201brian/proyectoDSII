@@ -8,12 +8,13 @@ import CreateAccount from '../pages/CreateAccount';
 import '../styles/global.css';
 import LayoutEmployees from '../containers/LayoutEmployees';
 import EmployeeIndex from '../pages/EmployeeIndex'
+import PrintService from '../components/PrintService';
 
 const App = () => {
     return (
         <BrowserRouter>
                 <Routes>
-                    <Route exact path="/" element={<Layout><Home/></Layout>}/>
+                    <Route exact path="/" element={<Layout><Home><PrintService/></Home></Layout>}/>
                     <Route exact path="/login/" element={<Layout><Login/></Layout>}/>
                     <Route exact path="/createAcount/" element={<CreateAccount/>}/>
                     <Route exact path="*" element={<Layout><NotFound/></Layout>}/>
