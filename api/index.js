@@ -1,20 +1,31 @@
 const express = require("express")
 const cors = require("cors")
-const routerApi = require("./routes");
+const routes = require("./routes");
 const app = express()
 const port = 3000
 
-app.use(express.json())
-app.get('/', (req, res) => {
-    console.log('Running correctly');
-  });
-
+//
 app.use(cors({
-    origin: '*'
-  }));
+  origin: '*'
+}));
+
+app.use(express.json())
+
+app.get('/ping', (req, res) => {
+    /**
+     * SE MODIFICA LA RESPUESTA
+     * Objetivo: Responder utilizando JSON como estandar para la 
+     *           construcción de APIs REST
+     * Obs: TODO recurso-endpoint debe responder usando JSON
+     */
+    res.json({ message: 'pong' });
+});
 
 app.listen(port, () => {
     console.log('Backend running in port:  ' +  port);
-  });
-  
-routerApi(app);  
+});
+
+/**
+ * SE VINCULAN LAS RUTAS 
+ */
+app.use("/api/v1", routes);

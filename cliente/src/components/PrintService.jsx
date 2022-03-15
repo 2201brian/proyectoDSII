@@ -1,67 +1,92 @@
 import React, { useRef } from 'react';
 import '../styles/PrintService.scss';
 
+/// SE INCORPORA axios PARA ENVIAR LA PETICION AL BACKEND (api)
+/// SE SUGIERE UN MODULO/COMPONENTE PARA SOLICITUDES
+/// UTILIZAR ALGUN PATRON DE DISEÑO
+import axios from "axios";
+
+
 const PrintService = () => {
-    const form =useRef(null);
+    /// SE PUDE CONSIDERAR LA CREACIÓN DE COMPONENTES CON ESTADO
+    const form =useRef(null); 
 
     const handleSubmit = (event)=>{
         event.preventDefault();
         const formData = new FormData(form.current);
-        const data = {
-            file: formData.get('uploadedFile'),
-            description: formData.get('description'),
-            quantity: formData.get('quantity'),
-            color: formData.get('color'),
-            laminate: formData.get('laminado')
+        
+        const url = 'http://localhost:3000/api/v1/documents/print';
+        const config ={
+            headers: { /// importante para enviar archivos
+                'content-type': 'multipart/form-data'
+            },                    
         }
-        console.log(data);
-        //ingresar
+        axios.post(                      
+            url,
+            formData, /// SE SUGIERE ENVIAR TODO EL FORMULARIO
+            config
+        )
+        .then(res => {
+            console.log(`Success` + res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+
     }
 
     return (
+        /// EL CÓDIGO A CONTINUACION 
+        /// PARECE HTML PERO ES JSX
+        /// NO TODAS LAS ETIQUETAS SIRVEN ....
+        /// for es propio de Javascript,
+        /// no se debe utilizar para vincular
+        /// etiquetas (label) de HTML  con
+        /// inputs.
+
         <div className="print-service-container">
             <div className="image-container">
                 <img src="https://www.ofimaticasz.com/wp-content/uploads/2020/12/Historial-de-impresiones.jpg" alt="service"/>
             </div>
             <div className="service-tittle-container">
-                <label htmlFor="serviceName" className="service-name">Impresiones y laminados</label>
+                <label className="service-name">Impresiones y laminados</label>
             </div>
-            <form className="form-print" ref={form}>
+            <form className="form-print" ref={form}> {/** Existe otra forma sin ref */}
                 <fieldset className="form-basic">
                     <legend>Describa la solicitud de impresión</legend>
 
                     <section className="section-form">
-                        <label htmlFor="input-file-lbl" className="lbl-form">Archivo:</label>
-                        <input className="files" type="file" name="uploadedFile"/>
+                        <label className="lbl-form">Archivo:</label>
+                        <input className="files" type="file" name="a_file"/>
                     </section>
 
                     <section className="section-form">
-                        <label htmlFor="description-lbl" className="lbl-form">Descripción:</label>
+                        <label className="lbl-form">Descripción:</label>
                         <textarea name="description" className="description" cols="45" rows="8" maxLength="500" required="required" spellCheck="false" data-ms-editor="true" ></textarea>
                     </section>
 
                     <section className="section-form">
-                        <label htmlFor="quantity-lbl" className="lbl-form">Cantidad de copias:</label>
+                        <label className="lbl-form">Cantidad de copias:</label>
                         <input className="files" type="number" name="quantity" min="1" max="10"/>
                     </section>
 
                     <section className="section-form">
-                        <label htmlFor="color-lbl" className="lbl-form">Opciones de color:</label>
+                        <label className="lbl-form">Opciones de color:</label>
                         <div className="color-selection">    
                             <input type="radio" name="color"  id="color-choice1" value="color"/>
-                            <label htmlFor="color-choice1" >Color</label>
+                            <label >Color</label>
                             <input type="radio" name="color" id="color-choice2" value="byn"/>
-                            <label htmlFor="color-choice2">Blanco y Negro</label>
+                            <label >Blanco y Negro</label>
                         </div>
                     </section>
 
                     <section className="section-form">
-                        <label htmlFor="laminado-lbl" className="lbl-form">Desea laminar las impresiones:</label>
-                        <div className="color-selection">    
+                        <label className="lbl-form">Desea laminar las impresiones:</label>
+                        <div className="laminate-selection">    
                             <input type="radio" name="laminado"  id="laminado-choice1" value="true"/>
-                            <label htmlFor="laminado-choice1" >Sí</label>
+                            <label >Sí</label>
                             <input type="radio" name="laminado" id="laminado-choice2" value="false"/>
-                            <label htmlFor="laminado-choice2">No</label>
+                            <label >No</label>
                         </div>
                     </section>
 
@@ -69,7 +94,7 @@ const PrintService = () => {
             </form>
             <div className="btn-container">
 				<button className="primary-button"
-                onClick={handleSubmit}>Solicitar</button>
+                onClick={handleSubmit}>Solicitar</button> {/** Este boton debe ser un submit */}
 		    </div>
         </div>
     );
