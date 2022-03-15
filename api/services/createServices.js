@@ -20,6 +20,7 @@ async crearEmpleado(name, email, id, password) {
         */
       }
 
+
 async revisarEmpleado(id, name) {
         const query2 = `SELECT id_empleado, nombre FROM empleados WHERE id_empleado = '${id}' AND nombre = '${name}'`;
         const [data] = await sequelize.query(query2);
