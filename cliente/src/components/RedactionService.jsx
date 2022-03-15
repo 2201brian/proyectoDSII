@@ -1,6 +1,8 @@
 import React, {useRef} from 'react';
 import '../styles/PrintService.scss';
 
+import axios  from 'axios';
+
 const RedactionService = () => {
 
     const form =useRef(null);
@@ -8,12 +10,26 @@ const RedactionService = () => {
     const handleSubmit = (event)=>{
         event.preventDefault();
         const formData = new FormData(form.current);
-        const data = {
-        }
-        //console.log(data);
-        //ingresar(data);
-    }
 
+        const url = "http://localhost:3000/api/v1/redact/request";
+        const config ={
+            headers: { /// importante para enviar archivos
+                'content-type': 'multipart/form-data'
+            },                    
+        }
+        axios.post(
+            url,
+            formData,
+            config
+        )
+        .then(res=>{
+            console.log(`Success`+res.data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+    /*
     var n =  new Date();
     var y = n.getFullYear();
     var m = n.getMonth() + 1;
@@ -29,7 +45,7 @@ const RedactionService = () => {
         
     var datemin = y + "-" + m + "-" + d;
     var datemax = y + "-" + m + "-" + d1;
-
+     */
     return (
         <div className="print-service-container">
             <div className="image-container">
@@ -54,7 +70,7 @@ const RedactionService = () => {
 
                     <section className="section-form">
                         <label for="date-lbl" className="lbl-form">Fecha límite:</label>
-                        <input type="date" name="date" min={datemin} max={datemax}/>
+                        <input type="date" name="date"/>
                     </section>
 
                     <section className="section-form">

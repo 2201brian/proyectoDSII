@@ -36,13 +36,7 @@ const PrintService = () => {
     }
 
     return (
-        /// EL CÓDIGO A CONTINUACION 
-        /// PARECE HTML PERO ES JSX
-        /// NO TODAS LAS ETIQUETAS SIRVEN ....
-        /// for es propio de Javascript,
-        /// no se debe utilizar para vincular
-        /// etiquetas (label) de HTML  con
-        /// inputs.
+       
 
         <div className="print-service-container">
             <div className="image-container">
