@@ -2,10 +2,14 @@ const express = require("express");
 const router = express.Router();
 const loginService = require("../services/loginServices");
 const service = new loginService();
+const seleccion = require("../services/seleccionarServices");
+const service2 = new seleccion();
 
 router.get("/", async (req,res,next) =>{
     try {
-        res.send("estas en login");
+        const data = await service2.servicioImpresion();
+        console.log(data);
+        res.send(data);
     } catch (error) {
         next(error)
     }

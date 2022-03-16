@@ -1,5 +1,6 @@
 const pool = require("../libs/postgresPool");
 const sequelize = require("../libs/sequelize");
+const { QueryTypes } = require('@sequelize/core');
 
 class seleccionarServices{
     constructor(){
@@ -9,8 +10,8 @@ class seleccionarServices{
 
 async servicioImpresion() {
         const query =  `select * from solicitud_impresiones`;
-        const data = await sequelize.query(query);
-        return data;
+        const [result] = await sequelize.query(query);
+        return result;
       }
     
 async servicioRedaccion() {
