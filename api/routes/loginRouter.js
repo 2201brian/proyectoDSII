@@ -14,8 +14,8 @@ router.get("/", async (req,res,next) =>{
 router.post("/check",async (req,res,next) =>{
     try {
     const {username,password} = req.body
-    const products = await service.find(username,password);
-    if(products){
+    const login = await service.find(username,password);
+    if(login){
         res.json("Found")
     }
     else{

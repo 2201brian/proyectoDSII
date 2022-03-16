@@ -1,15 +1,34 @@
 import React, {useRef} from 'react';
 import '../styles/PrintService.scss';
+import axios from "axios";
 
 const IssuanceService = () => {
 
     const form =useRef(null);
-
     const handleSubmit = (event)=>{
         event.preventDefault();
         const formData = new FormData(form.current);
-        //ingresar
+
+        const url = "http://localhost:3000/api/v1/Issuance/receipt";
+        const config ={
+            headers: { /// importante para enviar archivos
+                'content-type': 'multipart/form-data'
+            },                    
+        }
+        axios.post(
+            url,
+            formData,
+            config
+        )
+        .then(res=>{
+            console.log(`Success`+res.data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
+
+   
 
     return (
         <div className="print-service-container">
@@ -25,17 +44,17 @@ const IssuanceService = () => {
 
                     <section className="section-form">
                         <label htmlFor="quantity-lbl" className="lbl-form">Cédula:</label>
-                        <input className="files" type="text" name="quantity"/>
+                        <input className="files" type="text" name="identification"/>
                     </section>
 
                     <section className="section-form">
                         <label htmlFor="quantity-lbl" className="lbl-form">Número de contrato:</label>
-                        <input className="files" type="text" name="quantity"/>
+                        <input className="files" type="text" name="contract"/>
                     </section>
 
                     <section className="section-form">
                         <label htmlFor="quantity-lbl" className="lbl-form">No. Pago Electrónico:</label>
-                        <input className="files" type="text" name="quantity"/>
+                        <input className="files" type="text" name="pay"/>
                     </section>
 
                     <section className="section-form">
@@ -46,9 +65,9 @@ const IssuanceService = () => {
                     <section className="section-form">
                         <label htmlFor="laminado-lbl" className="lbl-form">Desea recibir el documento al correo:</label>
                         <div className="color-selection">    
-                            <input type="radio" name="laminado"  id="laminado-choice1" value="true"/>
+                            <input type="radio" name="correo"  id="laminado-choice1" value="true"/>
                             <label htmlFor="laminado-choice1" >Sí</label>
-                            <input type="radio" name="laminado" id="laminado-choice2" value="false"/>
+                            <input type="radio" name="correo" id="laminado-choice2" value="false"/>
                             <label htmlFor="laminado-choice2">No</label>
                         </div>
                     </section>

@@ -4,11 +4,17 @@ const createUser = require("./createUserRouter");
 const impresiones = require("./impresionesRouter");
 const actualizar = require("./actualizarUserRouter");
 const redaccion = require("./redaccionRouter");
+const citas = require("./citasRouter");
+const recibo = require("./recibosRouter");
+const revisar = require("./revisarSolicitudes");
 const router = express.Router();
+//------------
 router.use("/login",loginRouter);
 router.use("/createAcount",createUser);
 router.use("/documents",impresiones);
 router.use("/updateUser",actualizar);
 router.use("/redact",redaccion);
-
+router.use("/date",citas);
+router.use("/Issuance",recibo);
+router.use("/List",revisar);
 module.exports = router;
