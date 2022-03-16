@@ -8,7 +8,7 @@ class actualizarServices{
     }
 
 async actualizarEmpleado(name, email, id, password) {
-        const query =  `update empleados set nombre = '${name}', email = '${email}', password = '${password}' where id_empleado = '${id}'`;
+        const query =  `update empleados set nombre = '${name}', email = '${email}', contraseña = '${password}' where id_empleado = '${id}'`;
         const [data] = await sequelize.query(query);
         return true;
       }

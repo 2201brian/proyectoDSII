@@ -13,7 +13,7 @@ router.get("/", async (req,res,next) =>{
 
 router.get("/Impresiones",async (req,res,next) =>{
     try {
-        const {rows} = await service.servicioImpresion();
+        const rows = await service.servicioImpresion();
         res.send(rows);
     }
      catch (error) {
