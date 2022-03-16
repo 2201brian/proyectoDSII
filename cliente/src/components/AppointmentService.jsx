@@ -1,30 +1,33 @@
 import React, {useRef} from 'react';
 import '../styles/PrintService.scss';
-
+import axios from "axios";
 const AppointmentService = () => {
     const form =useRef(null);
 
     const handleSubmit = (event)=>{
         event.preventDefault();
         const formData = new FormData(form.current);
+
+        const url = "http://localhost:3000/api/v1/date/date";
+        const config ={
+            headers: { /// importante para enviar archivos
+                'content-type': 'multipart/form-data'
+            },                    
+        }
+        axios.post(
+            url,
+            formData,
+            config
+        )
+        .then(res=>{
+            console.log(`Success`+res.data);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
 
-    var n =  new Date();
-    var y = n.getFullYear();
-    var m = n.getMonth() + 1;
-    var d = n.getDate() +1;
-    var d1 = d+14;
-    if (d < 10) {
-        d = '0' + d;
-     }
-     
-     if (m < 10) {
-        m = '0' + m;
-     } 
-        
-    var datemin = y + "-" + m + "-" + d;
-    var datemax = y + "-" + m + "-" + d1;
-
+ 
     return (
         <div className="print-service-container">
             <div className="image-container">
@@ -61,9 +64,9 @@ const AppointmentService = () => {
                     <section className="section-form">
                         <label for="date-lbl" className="lbl-form">Rango de fechas:</label>
                         <p>Fecha Inicial:</p>
-                        <input type="date" id="dateinicio" name="-inicio" min={datemin} max={datemax}/>
+                        <input type="date" id="dateinicio" name="inicio" />
                         <p>Plazo máximo:</p>
-                        <input type="date" name="date-fin" min={datemin} max={datemax}/>
+                        <input type="date" name="datefin" />
                     </section>
 
                     <section className="section-form">
