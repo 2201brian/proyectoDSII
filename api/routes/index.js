@@ -4,6 +4,7 @@ const loginRouter = require("./loginRouter");
 const createUser = require("./createUserRouter");
 const actualizar = require("./actualizarUserRouter");
 const listar = require("./userListRouter");
+const eliminar = require("./deleteRouter");
 //SOLICITUDES
 const impresiones = require("./impresionesRouter");
 const redaccion = require("./redaccionRouter");
@@ -21,4 +22,5 @@ router.use("/date",citas);
 router.use("/Issuance",recibo);
 router.use("/List",revisar);
 router.use("/ListaUser",listar);
+router.use("/Delete",eliminar);
 module.exports = router;
