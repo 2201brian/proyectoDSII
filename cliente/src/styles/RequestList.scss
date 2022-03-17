@@ -1,23 +1,30 @@
 @import 'vars';
 
+.container-consultas{
+    width: 100%;
+
+
+}
+
 .button-bar{
-    width: 150px;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    border-right: 3px solid var(--indigo-dark-primary);
+    border-bottom: 3px solid var(--indigo-dark-primary);
     background-color: var(--accent-amber-light);
 }
 .button-b{
-    width: 100%;
+    width: 110px;
     height: 60px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
     cursor: pointer;
-}
-.button-b a{
     text-decoration: none;
     color:var(--indigo-dark-primary);
 }
-.button-b a:hover{
+.button-b:hover{
     color: var(--accent-amber);
+}
+.request_list{
+    width: 100%;
 }

@@ -1,0 +1,55 @@
+@import 'vars';
+
+.request-container{
+    width: 80%;
+    height: 50px;
+    display: flex;
+    border: 1px solid var(--indigo-dark-primary);
+    background-color: var(--text-input-field);
+}
+.info-request{
+    position: relative;
+    right: 0px;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+.info-request span{
+    margin-left: 20px;
+    text-align: center;
+    justify-content: center;
+}
+.buttons-containers{
+    position: relative;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    right: 0px;
+}
+.delete-button{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    color:#fb0238;
+    border: 1px solid #fb0238;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+.button-b{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color:var(--indigo-dark-primary);
+    border: 1px solid var(--indigo-dark-primary);
+    border-radius: 8px;
+}
+.button-b :hover{
+    color: var(--accent-amber);
+}
