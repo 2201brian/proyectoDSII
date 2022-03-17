@@ -6,7 +6,7 @@ import '../styles/RequestList.scss';
 const RequestReceiptList = () => {
     const [requests, setRequests] = useState([]);
 
-    const apiRecibos = 'http://localhost:3000/api/v1/List/Recibos';
+    const apiRecibos = 'http://localhost:3000/api/v1/List/Recibo';
 
     useEffect(async ()=> {
         const res = await axios.get(apiRecibos).then((res) =>{

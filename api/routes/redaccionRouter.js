@@ -15,14 +15,11 @@ router.get("/", async(req,res,next) =>{
 
 router.post("/request",multer.single("uploadedFiles"), async (req,res,next) =>{
     try {
-        const{description,date,correo} = req.body;
-        
-        const create = await redactservices.crearSolicitud(req.file.originalname,description,date,correo);
+        const{description,date,correo,nombre,telefono,email} = req.body;
+        const create = await redactservices.crearSolicitud(req.file.originalname,description,date,correo,nombre,telefono,email);
         if(create){
             res.json("Solicitud creada");
         }
-        
-        
     } catch (error) {
         next(error)
     }
