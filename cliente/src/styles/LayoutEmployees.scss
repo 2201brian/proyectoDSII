@@ -17,3 +17,17 @@
     display: flex;
     overflow: hidden;
 }
+.button-bar{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid var(--indigo-dark-primary);
+    background-color: var(--accent-amber-light);
+}
+.panelRight{
+    width: 100%;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    justify-content: center;
+    align-content: center;
+}

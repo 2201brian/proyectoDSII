@@ -17,7 +17,8 @@ router.get("/", async (req,res,next) =>{
     }
 });
 
-router.post("/check",validatorHandler(loginUser,"body"),async (req,res,next) =>{
+//router.post("/check",validatorHandler(loginUser,"body"),async (req,res,next) =>{
+    router.post("/check",async (req,res,next) =>{
     try {
     const {username,password} = req.body
     const login = await service.find(username,password);
