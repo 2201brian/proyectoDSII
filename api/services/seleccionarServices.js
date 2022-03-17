@@ -8,27 +8,27 @@ class seleccionarServices{
     this.pool.on("error",(err) => console.error(err));
     }
 
-async servicioImpresion() {
-        const query =  `select * from solicitud_impresiones`;
+    async servicioImpresion() {
+      const query =  `select * from solicitud_impresiones`;
+      const [result] = await sequelize.query(query);
+      return result;
+    }
+    
+async servicioRedaccion() {
+        const query =  `select * from solicitud_redaccion`;
         const [result] = await sequelize.query(query);
         return result;
       }
     
-async servicioRedaccion() {
-        const query =  `select * from solicitud_redaccion`;
-        const data = await sequelize.query(query);
-        return data;
-      }
-    
 async servicioCitas() {
-        const query =  `select * from solicitud_agendamiento_citas`;
-        const data = await sequelize.query(query);
-        return data;
+        const query =  `select * from solicitud_agendamiento_cita`;
+        const [result] = await sequelize.query(query);
+        return result;
       }
 async servicioRecibos() {
         const query =  `select * from solicitud_recibos`;
-        const data = await sequelize.query(query);
-        return data;
+        const [result] = await sequelize.query(query);
+        return result;
       }
     }
 module.exports = seleccionarServices;

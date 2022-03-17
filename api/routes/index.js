@@ -1,8 +1,11 @@
 const express = require('express');
+//--USER
 const loginRouter = require("./loginRouter");
 const createUser = require("./createUserRouter");
-const impresiones = require("./impresionesRouter");
 const actualizar = require("./actualizarUserRouter");
+const listar = require("./userListRouter");
+//SOLICITUDES
+const impresiones = require("./impresionesRouter");
 const redaccion = require("./redaccionRouter");
 const citas = require("./citasRouter");
 const recibo = require("./recibosRouter");
@@ -17,4 +20,5 @@ router.use("/redact",redaccion);
 router.use("/date",citas);
 router.use("/Issuance",recibo);
 router.use("/List",revisar);
+router.use("/ListaUser",listar);
 module.exports = router;

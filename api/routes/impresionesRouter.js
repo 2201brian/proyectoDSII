@@ -15,12 +15,9 @@ router.get("/", async(req,res,next) =>{
 
 router.post("/print",multer.single("a_file"), async (req,res,next) =>{
     try {
-        
         const{description,quantity,color,laminado} = req.body;
         const create = await impservices.crearSolicitud(req.file.originalname,description,quantity,color,laminado);
         const id_soli = await impservices.returnID(req.file.originalname);
-        //console.log(id_soli);
-        //res.json({ message: '${filename} file add to queue' });
         res.json(id_soli);
     } catch (error) {
         next(error)

@@ -13,7 +13,7 @@ router.get("/", async (req,res,next) =>{
 
 router.get("/Impresiones",async (req,res,next) =>{
     try {
-        const {rows} = await service.servicioImpresion();
+        const rows = await service.servicioImpresion();
         res.send(rows);
     }
      catch (error) {
@@ -23,7 +23,7 @@ router.get("/Impresiones",async (req,res,next) =>{
 
 router.get("/Redaccion",async (req,res,next) =>{
     try {
-        const {rows} = await service.servicioRedaccion();
+        const rows = await service.servicioRedaccion();
         res.send(rows);
     }
      catch (error) {
@@ -33,7 +33,7 @@ router.get("/Redaccion",async (req,res,next) =>{
 
 router.get("/Citas",async (req,res,next) =>{
     try {
-        const {rows} = await service.servicioCitas();
+        const rows = await service.servicioCitas();
         res.send(rows);
     }
      catch (error) {
@@ -41,9 +41,9 @@ router.get("/Citas",async (req,res,next) =>{
     }
 });
 
-router.get("/Recibos",async (req,res,next) =>{
+router.get("/Recibo",async (req,res,next) =>{
     try {
-        const {rows} = await service.servicioRecibos();
+        const rows = await service.servicioRecibos();
         res.send(rows);
     }
      catch (error) {
