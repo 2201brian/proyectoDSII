@@ -1,10 +1,19 @@
 import React from 'react';
 import '../styles/Request.scss';
+import axios from 'axios';
 
 const Employee = ({employeeItem}) => {
-    const handleDelete = (event) =>{
+    
+    const handleDelete = async (event) =>{
         event.preventDefalt();
         //BORRAR USUARIOS
+        const res = await axios.post('http://localhost:3000/api/v1/Delete/user',employeeItem.id_empleado).then((res) =>{
+            try{
+                console.log(res.data);
+            } catch(e){
+                console.log(res, e);
+            } 
+        })
     }
 
     return (
