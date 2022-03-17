@@ -8,10 +8,10 @@ class reciboServices{
     }
 
 async crearSolicitud(cedula,contrato,pagoelectronico,descripcion,correo) {
-        const query =  `insert into solicitud_recibos
+        const query =  `insert into solicitud_recibos values
         (default,'${cedula}','${contrato}','${pagoelectronico}','${descripcion}','${correo}')`;
         const [data] = await sequelize.query(query);
-        return true;
+        //return true;
       }
     }
     

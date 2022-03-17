@@ -11,5 +11,15 @@ const createUser = Joi.object({
     username : idSchm.required(),
     password : passwordSchm.required()
 });
+const updateUser = Joi.object({
+    name: nameSchm.required(),
+    email : emailSchm.required(),
+    passwordSchm : passwordSchm.required()
+});
 
-module.exports = {createUser};
+const loginUser = Joi.object({
+    username : idSchm.required(),
+    passwordSchm : passwordSchm.required()
+});
+
+module.exports = {createUser,updateUser,loginUser};

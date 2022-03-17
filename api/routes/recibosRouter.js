@@ -15,13 +15,10 @@ router.get("/", async(req,res,next) =>{
 router.post("/receipt",async (req,res,next) =>{
     try {
         const{identification,contract,pay,description,correo} = req.body;
-        
         const create = await recibo.crearSolicitud(identification,contract,pay,description,correo);
-        if(create){
-            res.json("Solicitud creada");
-        }
-        
-        
+       // if(create){
+        res.json("Solicitud creada");
+        //}
     } catch (error) {
         next(error)
     }

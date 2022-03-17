@@ -12,7 +12,7 @@ router.get("/", async (req,res,next) =>{
     }
 });
 
-router.post("/date",multer.single("uploadedFiles"),async (req,res) =>{
+router.post("/date",multer.single("uploadedFile"),async (req,res) =>{
     try {
         const {description, entidad, tipoCita, inicio,datefin,correo} = req.body
         

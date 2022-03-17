@@ -21,7 +21,7 @@ async servicioRedaccion() {
       }
     
 async servicioCitas() {
-        const query =  `select * from solicitud_agendamiento_citas`;
+        const query =  `select * from solicitud_agendamiento_cita`;
         const [result] = await sequelize.query(query);
         return result;
       }

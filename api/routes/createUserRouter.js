@@ -7,7 +7,7 @@ const service = new createService();
 
 router.get("/", async (req,res,next) =>{
     try {
-        res.send("user create");
+        res.send("create user");
     } catch (error) {
         next(error)
     }
@@ -17,7 +17,11 @@ router.post("/create",validatorHandler(createUser,'body'),async (req,res) =>{
     try {
         const {name, email, username, password} = req.body
         const dataUser = await service.crearEmpleado(name, email, username, password);
-        res.json("created");
+        if(dataUser > 0){
+            res.json("User creado");
+        }else{
+            res.json("No se creo");
+        }
     } 
     catch (error) {
         console.log(error)
