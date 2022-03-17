@@ -14,14 +14,14 @@ router.get("/", async (req,res,next) =>{
 
 router.post("/date",multer.single("uploadedFile"),async (req,res) =>{
     try {
-        const {description, entidad, tipoCita, inicio,datefin,correo} = req.body
+        const {description, entidad, tipoCita, inicio,datefin,correo,nombre,telefono,email} = req.body
         
         if(req.file == undefined){
-            const dataUser = await service.crearSolicitud("",description,entidad,inicio,datefin,correo,tipoCita);
+            const dataUser = await service.crearSolicitud("",description,entidad,inicio,datefin,correo,tipoCita,nombre,telefono,email);
         }else{
-            const dataUser = await service.crearSolicitud(req.file.originalname,description,entidad,inicio,datefin,correo,tipoCita);
+            const dataUser = await service.crearSolicitud(req.file.originalname,description,entidad,inicio,datefin,correo,tipoCita,nombre,telefono,email);
         }
-        res.json("updated");
+        res.json("creada");
     } 
     catch (error) {
         console.log(error)
