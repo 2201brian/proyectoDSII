@@ -1,7 +1,5 @@
 import React, { Children, useState, useRef } from 'react';
-import '../styles/LayoutEmployees.scss';
 import EmployeeIndex from '../pages/EmployeeIndex.jsx';
-import RequestList from '../pages/RequestList';
 import CreateAccount from '../pages/CreateAccount';
 import UpdateUser from '../pages/UpdateUser';
 import EmployeesList from '../pages/EmployeesList';
@@ -9,7 +7,7 @@ import RequestPrintList from '../pages/RequestPrintList';
 import RequestRedacList from '../pages/RequestRedacList';
 import RequestCitaList from '../pages/RequestCitaList';
 import RequestReceiptList from '../pages/RequestReceiptList';
-import '../styles/BarEmployee.scss';
+import '../styles/LayoutEmployees.scss';
 
 const LayoutEmployees = () => {
     const [element, setElement] = useState(<EmployeeIndex/>);

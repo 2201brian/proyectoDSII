@@ -25,7 +25,7 @@ const RequestPrintList = () => {
     return (
         <div className='request-list'>
             {requests.map(request =>(
-                <Request request={request} key={request.id_Sol}/>
+                <Request request={request} type={'print'} key={request.id_Sol}/>
             ))}
         </div> 
     );
